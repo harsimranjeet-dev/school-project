@@ -15,12 +15,13 @@ if(!in_array($imageFileType,$allowed_types)){
 else{
   $_SESSION['form_err']="";
 }
-$f_f = $_POST['form_fee'];
-$ad_f = $_POST['ad_fee'];
-$ms = $_POST['ms_chg'];
-$c = $_POST['cm'];
-$e_f = $_POST['e_fee'];
-$reg_num= $_POST['REG_NO'];
+ $s_details=$_POST["SiblingDetails"]; 
+ $f_f = $_POST['form_fee'];
+ $ad_f = $_POST['ad_fee'];
+ $ms = $_POST['ms_chg'];
+ $c = $_POST['cm'];
+ $e_f = $_POST['e_fee'];
+ $reg_num= $_POST['REG_NO'];
  $snf = $_POST['SNf'];
  $snl = $_POST['SNl'];
  $Class_nm1 = $_POST['class_nm1'];
@@ -45,8 +46,8 @@ $reg_num= $_POST['REG_NO'];
  $result1 = mysqli_query($conn,$sql2);
  $rows1 = mysqli_fetch_array ($result1);
  $class_n = $rows1['class_name'];
-  $sql = "INSERT INTO students (First_Name, Last_Name, Class, Section, DoB, Gender, F_First_Name, F_Last_Name , M_First_Name, M_Last_Name, S_Address, S_Address_s, City, State, Zip_Code, Phone, Email, S_REG_NUM, std_pic, st_Session)
-  VALUES ('$snf', '$snl', '$class_n', '$section', '$DoB', '$gender', '$fatherf', '$fatherl','$motherf','$motherl', '$streetAD', '$streetADs', '$city', '$state', '$postal', '$phone', '$email', $reg_num , '$pic_nm', '$Class_nm2')";
+  $sql = "INSERT INTO students (First_Name, Last_Name, Class, Section, DoB, Gender, F_First_Name, F_Last_Name , M_First_Name, M_Last_Name, S_Address, S_Address_s, City, State, Zip_Code, Phone, Email, S_REG_NUM, std_pic, st_Session,sibling_dcp)
+  VALUES ('$snf', '$snl', '$class_n', '$section', '$DoB', '$gender', '$fatherf', '$fatherl','$motherf','$motherl', '$streetAD', '$streetADs', '$city', '$state', '$postal', '$phone', '$email', $reg_num , '$pic_nm', '$Class_nm2','$s_details')";
   
   
   if (mysqli_query($conn, $sql)) {
