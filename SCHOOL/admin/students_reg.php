@@ -129,14 +129,25 @@ $result3 = mysqli_query($conn, $sql3);
         <input type="text" name="StreetAD" placeholder="Street Address" required>
         <input style="margin-left:7px;" type="text" name="StreetADs" placeholder="Street Address 2 Optional" ><br>
         <input type="text" name="City" placeholder="City"><input type="text" name="State" placeholder="State" required>
-        <input type="text" name="Postal" placeholder="Postal/Zip Code" required><br>
+        <input style="width:150px" type="text" name="Postal" placeholder="Postal/Zip Code" required><br>
       </div>
-      <div>
-        <label for="Phone">Phone:</label>
-        <input type="number" name="Phone" placeholder="#####-#####" required><br></div><div>
-        <label for="Email">Email:</label>
-        <input name="Email" type="email" required><br>
+      <!-- Contact + Sibling details block -->
+      <div class="contact-sibling-wrapper">
+        <div class="contact-fields">
+          <div>
+            <label for="Phone">Phone:</label>
+            <input type="number" name="Phone" placeholder="#####-#####" required>
+          </div>
+          <div>
+            <label for="Email">Email:</label>
+            <input name="Email" type="email" required>
+          </div>
         </div>
+        <div class="sibling-details">
+          <label for="SiblingDetails">Sibling details:</label>
+          <textarea name="SiblingDetails" id="SiblingDetails" rows="4" placeholder="List each sibling: Name - Class / Roll"></textarea>
+        </div>
+      </div>
       </div>
         </div>
         <div style="width: 335px; height: 200px;">
