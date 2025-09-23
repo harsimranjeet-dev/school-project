@@ -86,7 +86,7 @@ $result3 = mysqli_query($conn, $sql3);
       <p style="text-align: center;">Student Details</p>
       <div>
         <label for="no">Registration Number:</label>
-        <input type="text" name="REG_NO" value="<?php echo $reg_no + 1 ;?>" readonly="readonly" required><label for="current-date-input" style="margin-left:10px;">Date:</label><input type="date" id="current-date-input" style="padding-left: 10px;"><br>
+        <input type="text" name="REG_NO" value="<?php echo $reg_no + 1 ;?>" readonly="readonly" required><label for="current-date-input" style="margin-left:10px;">Date:</label><input name="current-date-input" type="date" id="current-date-input" style="padding-left: 10px;"><br>
         <label for="sn">Student Name:</label>
         <input style="margin-left:60px;" type="text" name="SNf" placeholder="First" required><input type="text" name="SNl" placeholder="Last" required><br>
       </div>
