@@ -96,14 +96,13 @@ $result3 = mysqli_query($conn1,$sql3);
   </script>
 </head>
 <body>
-
 <div class="container">
         <div class="card calculator-card">
             <div class="card-header text-center py-3">
                 <h2>Fee Structure</h2>
             </div>
             <div class="card-body px-md-5 ps-md-5">
-                <form id="feeForm">
+                <form id="feeForm" action="trans_insert.php" method="POST">
                     <!-- Student Details Section -->
                     <h5 class="mb-3">Student Information</h5>
                     <div class="row g-3 mb-4">
