@@ -96,18 +96,19 @@ $result3 = mysqli_query($conn1,$sql3);
   </script>
 </head>
 <body>
+    <form id="feeForm" action="transec_insert.php" method="POST">
 <div class="container">
         <div class="card calculator-card">
             <div class="card-header text-center py-3">
                 <h2>Fee Structure</h2>
             </div>
             <div class="card-body px-md-5 ps-md-5">
-                <form id="feeForm" action="trans_insert.php" method="POST">
                     <!-- Student Details Section -->
                     <h5 class="mb-3">Student Information</h5>
                     <div class="row g-3 mb-4">
                         <div class="col-md-6">
                             <label for="studentName" class="form-label">Student Name</label>
+                            <input type="hidden" name="re" value="<?php echo $reg_num ?>">
                             <input type="text" class="form-control" id="studentName" value="<?php echo $FN ?>">
                         </div>
                         <div class="col-md-6">
@@ -145,12 +146,16 @@ $result3 = mysqli_query($conn1,$sql3);
                             <input type="number" class="form-control" id="examFee" value="<?php echo $rows3['Exam_fee']?>">
                         </div>
                         <div class="col-md-6">
+                            <input type="hidden" name="TU_fee" value="<?php echo $rows3['Tuition']?>">
                             <label for="tuitionFee" class="form-label">Tuition Fee</label>
-                            <select class="form-select" id="tuitionFee" onchange="net_fee()">
+                            <select class="form-select" name="mode" id="tuitionFee" onchange="net_fee()">
                                 <option value="<?php echo $rows3['Tuition']?>"> Monthly</option>
                                 <option value="<?php echo $rows3['Tuition']*3?>">Quarterly</option>
                                 <option value="<?php echo $rows3['Tuition']*12?>">Yearly</option>
                             </select>
+                            <label for="for_month" class="form-label">For Month</label>
+                            <input type="text" name="for_month" class="form-control" id="for_month" placeholder="E.g., January- February">
+                            <textarea name="description" class="form-control mt-2" placeholder="Description (Optional)"></textarea>
                         </div>
                         <?php }
                           ?>
@@ -193,11 +198,11 @@ $result3 = mysqli_query($conn1,$sql3);
                     <div id="net_f">
                       
                        </div>
+                       <button style="margin-right: 50px;" type="submit" class="btn btn-primary px-4 mb-3">Submit Payment</button>
                        
-                       
-                </form>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</body>
+        </form>
+    </body>
 </html>

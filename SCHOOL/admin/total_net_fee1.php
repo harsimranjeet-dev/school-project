@@ -18,10 +18,9 @@ while($rows1 = mysqli_fetch_array ($result1)){
               <p>Total Fee: <span id="totalFeeSum" class="fw-bold"><?php echo "₹".$to?></span></p>
               <p>Discount: <span id="discountAmount" class="fw-bold"><?php echo "₹".$tot. " (". $n."%)"?></span></p>
               <p class="final-amount">Final Amount: <span id="finalAmount"><?php echo "₹". $total ?></span></p>
+              <input type="hidden" name="total_amount" value="<?php echo $total ?>">
+              <input type="hidden" name="discount_amount" value="<?php echo $tot ?>">
               <small id="feeNote" class="form-text text-muted d-block text-end"><?php echo "Quarterly ₹". $l ." fee included"?></small>
-            </div>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-              <button style="margin-right: 50px;" type="button" class="btn btn-primary px-4 mb-3">Submit Payment</button>
             </div>
           <?php }
 }

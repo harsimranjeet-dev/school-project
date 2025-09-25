@@ -1,19 +1,14 @@
 <?php
 
 include_once 'connection.php'; 
+$description = $_POST['description'];
+$for_month = $_POST['for_month'];
+$total_am = $_POST['total_amount'];
+$discount_am = $_POST['discount_amount'];
+$dis_op = $_POST['discountOptions'];
 $reg_num = $_POST['re'];
-$form_fee = $_POST['form_fee'];
-$admission_fee = $_POST['ad_fee'];
-$misc_charges = $_POST['ms_chg'];
-$caution_money = $_POST['cm'];
-$exam_fee = $_POST['e_fee'];
-$tuition_fee = $_POST['t_fee'];
-$billing_cycle = $_POST['billing_cycle'];
-$discount_percent = $_POST['discount_percent'];
-
-$total_amount = $_POST['total_amount'];
-$discount_amount = $_POST['discount_amount'];
-$net_amount = $_POST['net_amount'];
+$tuition_fee = $_POST['TU_fee'];
+$mode = $_POST['mode'];
 
 $student_sql = "SELECT Class, Section, st_Session FROM students WHERE S_REG_NUM = $reg_num";
 $student_result = mysqli_query($conn, $student_sql);
@@ -25,52 +20,31 @@ $class_name = $student_data['Class'];
 $section = $student_data['Section'];
 $session = $student_data['st_Session'];
 
-$insert_transaction_sql = "INSERT INTO `transaction` (
-    `student_id`,
-    `class`,
-    `section`,
-    `session`,
-    `form_fee`,
-    `admission_fee`,
-    `misc_charges`,
-    `caution_money`,
-    `exam_fee`,
-    `tuition_fee`,
-    `billing_cycle`,
-    `discount_percentage`,
-    `discount_amount`,
-    `total_amount`,
-    `net_amount`,
-    `transaction_date`
-) VALUES (
+$insert_transaction_sql = "INSERT INTO transaction (s_reg_no,description,for_month,s_session,class_name,class_section,m_fee,t_date) VALUES (
     '$reg_num',
+    '$description',
+    '$for_month',
+    '$session',
     '$class_name',
     '$section',
-    '$session',
-    '$form_fee',
-    '$admission_fee',
-    '$misc_charges',
-    '$caution_money',
-    '$exam_fee',
     '$tuition_fee',
-    '$billing_cycle',
-    '$discount_percent',
-    '$discount_amount',
-    '$total_amount',
-    '$net_amount',
-    NOW()
+     NOW()
 )";
 
 if (mysqli_query($conn, $insert_transaction_sql)) {
-    $insert_second_table_sql = "INSERT INTO `your_second_table_name` (
-        `column_1`, 
-        `column_2`
-    ) VALUES (
-        '$reg_num', 
-        'your_value'
-    )";
-    header("Location: student_transec.php?re=$reg_num&status=success");
-    exit();
+    $insert_second_table_sql = "UPDATE students SET 
+        tuition_fee_mode = '$mode', 
+        total_fee = '$total_am', 
+        sibling_discount = '$discount_am', 
+        monthly_fee = '$tuition_fee', 
+        relation = '$dis_op' 
+        WHERE S_REG_NUM = $reg_num";
+    if (mysqli_query($conn, $insert_second_table_sql)) {
+        header("Location: student_transec.php?re=$reg_num&status=success");
+        exit();
+    } else {
+        die("Error updating student data: " . mysqli_error($conn));
+    }
 } else {
     die("Error inserting transaction data: " . mysqli_error($conn));
 }
