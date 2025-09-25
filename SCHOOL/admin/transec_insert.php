@@ -31,10 +31,7 @@ $insert_transaction_sql = "INSERT INTO transaction (s_reg_no,description,for_mon
 )";
 
 if (mysqli_query($conn, $insert_transaction_sql)) {
-    $insert_second_table_sql = "UPDATE students SET 
-        tuition_fee_mode = '$mode', 
-        total_fee = '$total_am', 
-        sibling_discount = '$discount_am', 
+    $insert_second_table_sql = "UPDATE students SET tuition_fee_mode = '$mode', total_fee = '$total_am', sibling_discount = '$discount_am', 
         monthly_fee = '$tuition_fee'
         WHERE S_REG_NUM = $reg_num";
     if (mysqli_query($conn, $insert_second_table_sql)) {
