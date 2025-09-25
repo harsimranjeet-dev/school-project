@@ -5,7 +5,6 @@ $description = $_POST['description'];
 $for_month = $_POST['for_month'];
 $total_am = $_POST['total_amount'];
 $discount_am = $_POST['discount_amount'];
-$dis_op = $_POST['discountOptions'];
 $reg_num = $_POST['re'];
 $tuition_fee = $_POST['TU_fee'];
 $mode = $_POST['mode'];
@@ -36,8 +35,7 @@ if (mysqli_query($conn, $insert_transaction_sql)) {
         tuition_fee_mode = '$mode', 
         total_fee = '$total_am', 
         sibling_discount = '$discount_am', 
-        monthly_fee = '$tuition_fee', 
-        relation = '$dis_op' 
+        monthly_fee = '$tuition_fee'
         WHERE S_REG_NUM = $reg_num";
     if (mysqli_query($conn, $insert_second_table_sql)) {
         header("Location: student_transec.php?re=$reg_num&status=success");

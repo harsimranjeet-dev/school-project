@@ -112,7 +112,11 @@ $result3 = mysqli_query($conn, $sql3);
         </select><br></div>
         <div>
         <label for="DOB">Student's DoB:</label>
-        <input type="date" name="DOB" required><br></div>
+        <input type="date" name="DOB" required><br>
+        <label style="height: auto; width: auto;" for="brother">Brother</label>
+        <input style="height: auto; width: 10px;" type="radio" name="brother" value="brother" required>Brother
+        <label style="height: auto; width: auto;" for="sister">Sister</label>
+        <input style="height: auto; width: 10px;" type="radio" name="sister" value="sister" required>Sister<br></div>
         <div>
         <label for="Gender">Student's Gender:</label>
         <input style="height: auto;" type="radio" name="Gender" value="He" required>He<input style="height: auto;" type="radio" name="Gender" value="She" required>She<br></div>
