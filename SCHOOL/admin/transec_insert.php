@@ -19,7 +19,7 @@ $class_name = $student_data['Class'];
 $section = $student_data['Section'];
 $session = $student_data['st_Session'];
 
-$insert_transaction_sql = "INSERT INTO transaction (s_reg_no,description,for_month,s_session,class_name,class_section,m_fee,t_date) VALUES (
+$insert_transaction_sql = "INSERT INTO transaction (s_reg_no,description,for_month,s_session,class_name,class_section,m_fee,t_date,trans_am) VALUES (
     '$reg_num',
     '$description',
     '$for_month',
@@ -27,6 +27,7 @@ $insert_transaction_sql = "INSERT INTO transaction (s_reg_no,description,for_mon
     '$class_name',
     '$section',
     '$tuition_fee',
+    '$total_am',
      NOW()
 )";
 
