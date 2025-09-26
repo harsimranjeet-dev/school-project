@@ -13,6 +13,7 @@ while($rows1 = mysqli_fetch_array ($result1)){
         <td style="color:red !important;"><?php echo $rows1['DoB'] ?></td>
         <td><a href="edit.php?id=<?php echo $rows1['id']; ?>">Edit</a></td>
         <td><a href="delete.php?id=<?php echo $rows1['id']; ?>" onclick="return confirm('Are you sure?')">Delete</a></td>
+        <td><a href="filter.php?id=<?php echo $rows1['S_REG_NUM']; ?>" >View</a></td>
     </tr>
 <?php }
 ?>
